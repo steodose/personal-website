@@ -1,7 +1,7 @@
 ---
 title: "Projects"
 description: |
-  A repository of my analytics projects. This is udpated on a continuous, yet not often, basis.
+  A repository of my analytics projects
 ---
 
 ```{r setup, include=FALSE}
@@ -24,6 +24,9 @@ create_proj_card(
   text2 = NULL
 )
 
+
+
+
 create_proj_card(
   img_src = "images/imdb-logo.png",
   url = "https://steodosescu.shinyapps.io/IMDB-Ratings-Tool/?_ga=2.10299253.1948351145.1648491200-1836928452.1639278433",
@@ -31,6 +34,9 @@ create_proj_card(
   text = "TV series and ratings data for 1000+ shows in the IMDb database.",
   text2 = NULL
 )
+
+
+
 
 create_proj_card(
   img_src = "images/F1.png",
@@ -48,6 +54,10 @@ create_proj_card(
   text2 = NULL
 )
 
+
+
+
+
 create_proj_card(
   img_src = "images/NHL.png",
   url = "https://steodosescu.shinyapps.io/nhl-odds/",
@@ -55,5 +65,9 @@ create_proj_card(
   text = "My NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.",
   text2 = NULL
 )
+
+
+
+
 
 ```
