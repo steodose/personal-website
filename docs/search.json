@@ -10,7 +10,7 @@
     },
     {
       "path": "gallery.html",
-      "title": "Viz Gallery",
+      "title": "Gallery",
       "description": "Data Visualization",
       "author": [],
       "contents": "\nSelection of data visuals I’ve made to go along with blog posts at Between the Pipes.\nExperts vs Crowds TableEfficiency RatingsConference RatingsRevisiting Super Bowl Squares Strategy\nFrom the February 5, 2022 blog post\nSquares HeatmapSquares Heatmap QuartersSquares HistogramPayout TableThe Divisional Round was one of the most exciting weekends in NFL history\nFrom the January 29, 2022 blog post\nWin Probability GraphsGEI TableA few charts to close out 2021 and stroll into the new year\nFrom the January 15, 2022 blog post\n2021 vs 2021 animated2021 vs 2021 Line PlotStep Count Bar ChartStep Count Ridge PlotWeekly TableDeMar DeRozan is the Chicago Bulls’ fourth quarter, mid-range assassin\nFrom the December 30, 2021 blog post\nFour FactorsMidrangeWin PercentageMidrange TableDrama fit for a Netflix show, Formula One championship comes down to the wire\nFrom the December 10, 2021 blog post\nTop 20 DriversDrivers by Age2021 Constructor Standings2021 Constructors Cumulative Points2021 Drivers TableQuick Hits: Early season NHL takeaways\nFrom the November 17, 2021 blog post\nWinning PercentageInjuriesA Week 1 tilt in (my opinion) America’s best college football town\nFrom the November 14, 2021 blog post.\nCFB StadiumsChartable takeaways for the upcoming NHL season schedule\nFrom the October 11, 2021 blog post titled Chartable takeaways for the upcoming NHL season schedule. The plots below were heavily inspired by Owen Phillips’ work at his substack newsletter The F5.\n.\n.\nDoes Justin Fields solve all the Chicago Bears’ QB issues of recent past?\nFrom the September 17, 2021 blog post.\nExplosive PlaysCompletion Rate by DoTEuro 2020 (in 2021): An Italian Renaissance\nFrom the July 25, 2021 blog post.\nForecast TableShot Quality ProfilesForecast DistributionsScoring Profiles Target PlotWho holds the title ‘City of Champions’ in North American sports?\nFrom the July 21, 2021 blog post\nChampionships TableActual vs Expected\n\n\n",
@@ -26,10 +26,10 @@
     {
       "path": "projects.html",
       "title": "Projects",
-      "description": "A repository of my analytics projects. This is udpated on a continuous, yet not often, basis.",
+      "description": "A repository of my analytics projects",
       "author": [],
-      "contents": "\n\n\n\n\nClub Soccer Forecasts\n\n\nMy Club Soccer Forecasts app simulates and visualizes the results of the current Premier League season. Built using the Shiny app framework.\n\n\n\n\n\n\nIMDB Ratings Tool\n\n\nTV series and ratings data for 1000+ shows in the IMDb database.\n\n\n\n\n\n\nF1 Analytics\n\n\nWebsite dedicated to Formula 1 analytics and visualizaton.\n\n\n\n\n\n\nNFL Analytics\n\n\nWebsite dedicated to NFL advanced stats and analysis.\n\n\n\n\n\n\nNHL Odds App\n\n\nMy NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.\n\n\n\n\n\n\n\n",
-      "last_modified": "2022-03-30T21:39:49-07:00"
+      "contents": "\n\n\n\n\nClub Soccer Forecasts\n\n\nMy Club Soccer Forecasts app simulates and visualizes the results of the current Premier League season. Built using the Shiny app framework.\n\n\n\n\n\n\nIMDB Ratings Tool\n\n\nTV series and ratings data for 1000+ shows in the IMDb database.\n\n\n\n\n\n\nF1 Analytics\n\n\nWebsite dedicated to Formula 1 analytics and visualizaton.\n\n\n\n\n\n\nNFL Analytics\n\n\nWebsite dedicated to NFL advanced stats and analysis.\n\n\n\n\n\n\nNHL Odds App\n\n\nMy NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.\n\n\n\n\n\n\nU.S. Air Travel Dashboard\n\n\nThis dashboard explores how COVID-19 disrupted commericial airline travel in the United States. Created using Tableau Public.\n\n\n\n\n\n\n\n",
+      "last_modified": "2022-03-31T15:07:20-07:00"
     }
   ],
   "collections": []

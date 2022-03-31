@@ -69,5 +69,16 @@ create_proj_card(
 
 
 
+create_proj_card(
+  img_src = "images/US Air Travel Dashboard.png",
+  url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/U_S_AirTravel/USAirTravelDashboard",
+  title = "U.S. Air Travel Dashboard",
+  text = "This dashboard explores how COVID-19 disrupted commericial airline travel in the United States. Created using Tableau Public.",
+  text2 = NULL
+)
+
+
+
+
 
 ```
