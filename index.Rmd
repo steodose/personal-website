@@ -8,9 +8,9 @@ links:
     url: "https://twitter.com/steodosescu"
   - label: '`r fontawesome::fa("github")`'
     url: "https://github.com/steodose"
-  - label: '`r fontawesome::fa("wordpress")`'
+  - label: '<i class="fab fa-wordpress"></i> Blog'
     url: "https://between-the-pipes.com/"
-  - label: '`r fontawesome::fa("file")`'
+  - label: '<i class="fab fa-file"></i> Resume'
     url: "https://docs.google.com/document/d/17OJW2OUuW_B5f8x2n0ueu_iLUEhxxY6TBpb63IJN0rE/edit?usp=sharing"
   - label: '`r fontawesome::fa("envelope")`'
     url: "mailto:steodosescu@gmail.com"
