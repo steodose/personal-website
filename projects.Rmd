@@ -1,0 +1,9 @@
+---
+title: "Projects"
+description: |
+  A repository of my analytics projects. This is udpated on a continuous, yet not often, basis.
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```

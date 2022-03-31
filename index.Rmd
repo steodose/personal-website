@@ -1,0 +1,42 @@
+---
+title: "Stephan Teodosescu"
+image: "stephan.JPG"
+links:
+  - label: '`r fontawesome::fa("linkedin")`'
+    url: "https://www.linkedin.com/in/stephan-teodosescu/"
+  - label: '`r fontawesome::fa("twitter")`'
+    url: "https://twitter.com/steodosescu"
+  - label: '`r fontawesome::fa("github")`'
+    url: "https://github.com/steodose"
+  - label: '`r fontawesome::fa("wordpress")`'
+    url: "https://between-the-pipes.com/"
+  - label: '`r fontawesome::fa("file")`'
+    url: "https://docs.google.com/document/d/17OJW2OUuW_B5f8x2n0ueu_iLUEhxxY6TBpb63IJN0rE/edit?usp=sharing"
+  - label: '`r fontawesome::fa("envelope")`'
+    url: "mailto:steodosescu@gmail.com"
+site: distill::distill_website
+output:
+  postcards::trestles
+---
+ 
+## Bio
+
+An analytics professional (read: Data Nerd) with a background rooted at the intersection of engineering, science, and business. I partner with stakeholders to make processes more efficient and solve their complex business problems using rigorous analysis and data. Prior to joining Apple, I worked in specialty tax consulting at BDO USA, LLP. Before that, I graduated from Cal Poly, San Luis Obispo with a blended BS/MS degree in Biomedical Engineering. My professional interests include business analytics, statistics, finance, tech, and leadership development. I also dabble in sports analytics on the side. 
+
+## Education
+
+**California Polytechnic State University, SLO** | San Luis Obispo, CA
+
+M.S. in Biomedical Engineering | September 2013 - June 2015
+
+**California Polytechnic State University, SLO** | San Luis Obispo, CA
+
+B.S. in Biomedical Engineering | September 2009 - June 2013
+
+## Experience
+
+**Apple** | Data Analyst | May 2019 - Present
+
+**BDO USA, LLP** | R&D Tax Consultant | June 2015 - May 2019
+
+**Cytori Therapeutics** | R&D Engineering Intern | June 2014 - March 2015
