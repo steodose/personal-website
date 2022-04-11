@@ -4,7 +4,13 @@ description: |
   Data Visualization
 ---
 
-Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/).
+Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/) and throughout other projects.
+
+
+My submission to RStudio's 2021 table contest was included in the [RStudio Community Table Gallery](https://community.rstudio.com/c/table-gallery/64)
+
+![RStudio Table Contest](https://raw.githubusercontent.com/steodose/RStudio-Table-Contest/main/2021-22%20Premier%20League%20Table.png)
+
 
 
 How the 2022 World Cup draw shook out for USMNT and others
