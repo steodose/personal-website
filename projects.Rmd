@@ -16,6 +16,18 @@ source("R/create_proj_card.R")
 
 
 ```{r}
+
+create_proj_card(
+  img_src = "images/Premier League.png",
+  url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/2021-22PremierLeague_16503505579010/PremierLeague
+",
+  title = "Tableau: Premier League Dashboard",
+  text = "Current Premier League standings and statistics dashboard built in Tableau Public.",
+  text2 = NULL
+)
+
+
+
 create_proj_card(
   img_src = "images/PL.png",
   url = "https://steodosescu.shinyapps.io/club-soccer-forecasts/",
@@ -72,7 +84,7 @@ create_proj_card(
 create_proj_card(
   img_src = "images/US Air Travel.png",
   url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/U_S_AirTravel/USAirTravelDashboard",
-  title = "U.S. Air Travel Dashboard",
+  title = "Tableau: U.S. Air Travel Dashboard",
   text = "This dashboard explores how COVID-19 disrupted commericial airline travel in the United States. Created using Tableau Public.",
   text2 = NULL
 )
