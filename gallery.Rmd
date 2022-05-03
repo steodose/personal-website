@@ -6,6 +6,21 @@ description: |
 
 Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/) and throughout other projects.
 
+Storylines heading into the Stanley Cup Playoffs
+------------
+
+From the May 2, 2022 [blog post](https://between-the-pipes.com/2022/05/02/storylines-heading-into-the-stanley-cup-playoffs/)
+
+![Running Goal Differential](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Running%20Goal%20Differential%20with%20Logo.png)
+
+![Performance vs. Expectations](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Performance%20vs%20Expectations%20with%20Logo.png)
+
+![Team Scoring Rates](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Team%20Scoring%20Rate%20Leaders.png)
+
+![NHL Scoring over Time](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/League%20Averages%20Bar%20Chart%20with%20Logo.png)
+
+![First Round Matchups](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/col_nsh.png)
+
 
 Brentford will stay up -- can they do the once unthinkable and go top 10?
 ------------
