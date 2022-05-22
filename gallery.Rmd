@@ -6,6 +6,16 @@ description: |
 
 Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/) and throughout other projects.
 
+
+The Battle of Alberta is back, and goaltending is optional
+------------
+
+From the May 21, 2022 [blog post](https://between-the-pipes.com/2022/05/21/the-battle-of-alberta-is-back-and-goaltending-is-optional/)
+
+![Battle of Alberta Elo](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Elo%20Lineplot%20Frame%20(Figma).png)
+
+![R2: Calgary vs. Edmonton](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/cgy_edm.png)
+
 Storylines heading into the Stanley Cup Playoffs
 ------------
 
