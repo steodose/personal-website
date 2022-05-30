@@ -18,8 +18,8 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
-  img_src = "images/Overview.png",
-  url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/2021-22PremierLeague_16503505579010/Overview
+  img_src = "images/Home.png",
+  url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/2021-22PremierLeague_16503505579010/Home
 ",
   title = "Tableau: World Football Reporting Portal",
   text = "A suite of dashboards highlighting standings and match outcomes of the biggest football leagues in the world. Built in Tableau Public.",
