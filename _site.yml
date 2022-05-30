@@ -13,6 +13,6 @@ navbar:
       href: index.html
     - text: "Projects"
       href: projects.html
-    - text: "Gallery"
+    - text: "Viz Gallery"
       href: gallery.html
 output: distill::distill_article

@@ -1,10 +1,8 @@
 ---
-title: "Gallery"
+title: "Viz Gallery"
 description: |
-  Data Visualization
+  Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
-
-Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/) and throughout other projects.
 
 The NBA playoffs have been a real snooze this year
 ------------
