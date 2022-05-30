@@ -6,6 +6,13 @@ description: |
 
 Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/) and throughout other projects.
 
+The NBA playoffs have been a real snooze this year
+------------
+
+From the May 27, 2022 [blog post](https://between-the-pipes.com/2022/05/27/the-nba-playoffs-have-been-a-real-snooze-this-year/)
+
+![Playoff Blowouts](https://raw.githubusercontent.com/steodose/BlogPosts/master/NBA/Blowouts%20Chicklet%20Chart%20with%20Logo.png)
+
 
 The Battle of Alberta is back, and goaltending is optional
 ------------
