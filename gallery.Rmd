@@ -4,6 +4,16 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+
+Djokovic cruises to another Grand Slam title, while Rybakina of Kazakhstan surprises in a classic Wimbledon final weekend
+------------
+
+From the July 13, 2022 [blog post](https://between-the-pipes.com/2022/07/13/djokovic-cruises-to-another-grand-slam-title-while-rybakina-of-kazakhstan-surprises-in-a-classic-wimbledon-final-weekend/)
+
+![Tennis Grand Slams](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Men's%20Wimbledon%20Frame.png)
+
+![Gran Slams Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Grand%20Slams%20Table%20with%20Logo.png)
+
 The NBA playoffs have been a real snooze this year
 ------------
 

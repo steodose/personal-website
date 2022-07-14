@@ -18,6 +18,16 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/2022_FIFA_World_Cup.png",
+  url = "https://stephanteodosescu.com/World-Cup/index.html",
+  title = "2022 Men's FIFA World Cup Predictions",
+  text = "Simulations and predictions for the 2022 World Cup in Qatar.",
+  text2 = NULL
+)
+
+
+
+create_proj_card(
   img_src = "images/Home.png",
   url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/2021-22PremierLeague_16503505579010/Home
 ",
