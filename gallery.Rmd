@@ -4,6 +4,14 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+Tidy Tuesday submission: European flights
+------------
+
+From the July 19, 2022 [blog post](https://between-the-pipes.com/2022/07/19/tidy-tuesday-submission-european-flights/)
+
+![Euro Flights](https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/European%20Flights%20Patchwork%20with%20Logo.png)
+
+![Monthly Flights](https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/Monthly%20European%20Flights%20Table%20with%20Logo.png)
 
 Djokovic cruises to another Grand Slam title, while Rybakina of Kazakhstan surprises in a classic Wimbledon final weekend
 ------------
@@ -12,7 +20,7 @@ From the July 13, 2022 [blog post](https://between-the-pipes.com/2022/07/13/djok
 
 ![Tennis Grand Slams](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Men's%20Wimbledon%20Frame.png)
 
-![Gran Slams Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Grand%20Slams%20Table%20with%20Logo.png)
+![Grand Slams Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Grand%20Slams%20Table%20with%20Logo.png)
 
 The NBA playoffs have been a real snooze this year
 ------------
