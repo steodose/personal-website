@@ -4,6 +4,18 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+Ferrari has been dominant in qualifying, but strategic mistakes and reliability have plagued it on race day
+------------
+
+From the August 6, 2022 [blog post](https://between-the-pipes.com/2022/08/06/ferrari-has-been-dominant-in-qualifying-but-strategic-mistakes-and-reliability-have-plagued-it-on-race-day/)
+
+![Constructors Boxplot](https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Boxplot%20Plot%20with%20Logo.png)
+
+![Constructors Dumbbell Plot](https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Dumbbell%20Plot%20with%20Logo.png)
+
+![Race Results Table](https://raw.githubusercontent.com/steodose/F1/master/Race%20Results%20Table.png)
+
+
 Tidy Tuesday submission: European flights
 ------------
 
