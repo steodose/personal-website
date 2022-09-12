@@ -4,6 +4,24 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+Quick Hits: 2022 NFL win totals and championship expectations
+-----------
+
+From the September 11, 2022 [blog post](https://between-the-pipes.com/2022/09/11/quick-hits-2022-nfl-win-totals-and-championship-expectations/)
+
+![2022 NFL Win Totals](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20Barplot.png)
+
+![NFL Win Totals Trending](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20over%20Expected%20Barplot.png)
+
+![Conference Odds Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/conf_odds_2022_23.png)
+
+R can do pretty much everything, even visualize Leo’s dating timeline
+-----------
+
+From the August 31, 2022 [blog post](https://between-the-pipes.com/2022/08/31/r-can-do-pretty-much-everything-even-visualize-leos-dating-timeline/)
+
+![DiCaprio GFs](https://raw.githubusercontent.com/steodose/BlogPosts/master/Leo/dicaprio-gfs.png)
+
 Ferrari has been dominant in qualifying, but strategic mistakes and reliability have plagued it on race day
 ------------
 
