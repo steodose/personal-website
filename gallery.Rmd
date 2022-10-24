@@ -31,9 +31,9 @@ Quick Hits: 2022 NFL win totals and championship expectations
 
 From the September 11, 2022 [blog post](https://between-the-pipes.com/2022/09/11/quick-hits-2022-nfl-win-totals-and-championship-expectations/)
 
-![2022 NFL Win Totals](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20Barplot.png)
+![2022 NFL Win Totals](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20Barplot%20with%20Logo.png)
 
-![NFL Win Totals Trending](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20over%20Expected%20Barplot.png)
+![NFL Win Totals Trending](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20over%20Expected%20Barplot%20with%20Logo.png)
 
 ![Conference Odds Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/conf_odds_2022_23.png)
 
