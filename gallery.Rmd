@@ -4,6 +4,28 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+
+NHL Season Preview: Avalanche favored to repeat as Stanley Cup champs, and other storylines
+----------
+
+From the October 17, 2022 [blog post](https://between-the-pipes.com/2022/10/17/nhl-season-preview-avalanche-favored-to-repeat-as-stanley-cup-champs-and-other-storylines/
+
+![2023 NHL Point Totals](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23.png)
+
+![Strength of Schedule](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23%20with%20Logo.png)
+
+![Cup Odds Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/2022-23%20NHL%20Points%20Table.png)
+
+
+Pickleball is taking the country by storm
+-----------
+
+From the October 3, 2022 [blog post](https://between-the-pipes.com/2022/10/03/pickleball-is-taking-the-country-by-storm/)
+
+![Pickleball](https://raw.githubusercontent.com/steodose/BlogPosts/master/Pickleball/Pickleball%20Interest%20with%20Logo.png)
+
+
+
 Quick Hits: 2022 NFL win totals and championship expectations
 -----------
 
