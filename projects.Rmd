@@ -29,9 +29,9 @@ create_proj_card(
 
 create_proj_card(
   img_src = "images/2022_FIFA_World_Cup.png",
-  url = "https://stephanteodosescu.com/World-Cup/index.html",
+  url = "https://steodosescu.shinyapps.io/World-Cup-Dashboard/",
   title = "2022 Men's FIFA World Cup Predictions",
-  text = "Simulations and predictions for the 2022 World Cup in Qatar.",
+  text = "Dashboard highlighting win probabilities for each FIFA World Cup match, and overall team stats.",
   text2 = NULL
 )
 
