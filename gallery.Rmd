@@ -4,6 +4,27 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
 ---
 
+NFL games are tighter and more exciting this year
+---------
+
+From the December 24, 2022 [blog post](https://between-the-pipes.com/2022/12/24/nfl-games-are-tighter-and-more-exciting-this-year/)
+
+![NFL Point Distribution](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Scoring%20Diferential%20Boxplot%20with%20Logo.png)
+
+![NFL GEI](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Game%20Excitement%20Index%20with%20Logo.png)
+
+![GEI Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/2022%20Reg%20Season%20GEI%20Table%20with%20Logo.png)
+
+Jimmy Garoppolo is a better QB then people think, but the 49ers can win without him
+----------
+
+From the December 11, 2022 [blog post](https://between-the-pipes.com/2022/12/11/jimmy-garoppolo-is-a-better-qb-then-people-think-but-the-49ers-can-win-without-him/)
+
+![QB Summary](https://raw.githubusercontent.com/steodose/NFL/master/2022/QB%20Summary%20Table.png)
+
+![2022 EPA Tiers](https://raw.githubusercontent.com/steodose/NFL/master/2022/EPA%20Plot%20with%20Logo.png)
+
+![49ers EPA Ranks](https://raw.githubusercontent.com/steodose/NFL/master/2022/49ers%20EPA%20Ranks.png)
 
 NHL Season Preview: Avalanche favored to repeat as Stanley Cup champs, and other storylines
 ----------
