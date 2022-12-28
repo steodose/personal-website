@@ -18,6 +18,15 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/wordle-screenshot2.png",
+  url = "https://steodosescu.shinyapps.io/Wordle/",
+  title = "Wordle Web App",
+  text = "A Wordle app programmed using the Shiny web app framework, and inspiired by Winston Chang.",
+  text2 = NULL
+)
+
+
+create_proj_card(
   img_src = "images/WP Dashboard Screenshot.png",
   url = "https://steodosescu.shinyapps.io/nfl-win-probability/",
   title = "NFL Win Probability Tool",
