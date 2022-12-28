@@ -39,7 +39,7 @@ create_proj_card(
 create_proj_card(
   img_src = "images/2022_FIFA_World_Cup.png",
   url = "https://steodosescu.shinyapps.io/World-Cup-Dashboard/",
-  title = "2022 Men's FIFA World Cup Predictions",
+  title = "2022 Men's FIFA World Cup Odds",
   text = "Dashboard highlighting win probabilities for each FIFA World Cup match, and overall team stats.",
   text2 = NULL
 )
