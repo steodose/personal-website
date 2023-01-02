@@ -1,7 +1,7 @@
 ---
 title: "Viz Gallery"
 description: |
-  Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://between-the-pipes.com/), and throughout other projects.
+  Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://betweenthepipes.substack.com/), and throughout other projects.
 ---
 
 NFL games are tighter and more exciting this year
