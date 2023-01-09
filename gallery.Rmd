@@ -4,6 +4,15 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://betweenthepipes.substack.com/), and throughout other projects.
 ---
 
+
+Collin Morikawa collapses on Sunday at Kapalua
+--------
+
+From the January 8, 2023[blog post](https://betweenthepipes.substack.com/p/collin-morikawa-collapses-on-sunday)
+
+![Kapalua](https://raw.githubusercontent.com/steodose/BlogPosts/master/Golf/2023%20Kapalua%20Leaderboard%20Table%20with%20Logo.png)
+
+
 NFL games are tighter and more exciting this year
 ---------
 
