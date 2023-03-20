@@ -18,6 +18,15 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/Big 5 Frame.png",
+  url = "https://steodosescu.shinyapps.io/Big-5-Leagues/",
+  title = "Big 5 Leagues Web App",
+  text = "Dashboard looking at the current tables and statistics for the Big 5 European football leagues.",
+  text2 = NULL
+)
+
+
+create_proj_card(
   img_src = "images/wordle-screenshot2.png",
   url = "https://steodosescu.shinyapps.io/Wordle/",
   title = "Wordle Web App",
@@ -103,7 +112,7 @@ create_proj_card(
   img_src = "images/NHL.png",
   url = "https://steodosescu.shinyapps.io/nhl-odds/",
   title = "NHL Odds App",
-  text = "My NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.",
+  text = "[Deprecated as of 2022] My NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.",
   text2 = NULL
 )
 

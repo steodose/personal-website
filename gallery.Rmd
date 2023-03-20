@@ -5,10 +5,86 @@ description: |
 ---
 
 
+Hunting for value in picking March Madness winners
+-----
+
+From the March 14, 2023 [blog post](https://betweenthepipes.substack.com/p/hunting-for-value-in-picking-march)
+
+![March Madness Value Picks](https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Value%20Picks%20with%20Logo.png)
+
+
+![Efficiency Ratings](https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20NCAA%20Efficiency%20Ratings%20with%20Logo.png)
+
+![Conference Ratings](https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Conference%20Ratings.png%20with%20Logo.png)
+
+![2023 Experts vs Crowds Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Experts%20vs%20Crowds%20Table%20with%20Logo.png)
+
+
+The Super Bowl was the game we deserved
+-----
+
+From the February 13, 2023 [blog post](https://betweenthepipes.substack.com/p/the-super-bowl-was-the-game-we-deserved)
+
+![Super Bowl Win Prob](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/WP%20Plot%20with%20Logo.png)
+
+
+How To: Visualize Big Tech Stocks the Tidy Tuesday Way
+-----
+
+From the February 12, 2023 [blog post](https://betweenthepipes.substack.com/p/how-to-visualize-big-tech-stocks)
+
+
+![Big Tech has Gotten Bigger](https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/W6_Big%20Tech%20Patchwork.png)
+
+
+![Stocks Animated](https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/hindsight-bias.gif)
+
+Complete Guide to Super Bowl Squares: LVII Edition
+------
+
+From the February 11, 2023 [blog post](https://betweenthepipes.substack.com/p/complete-guide-to-super-bowl-squares)
+
+![Super Bowl LVII Squares](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Squares%20Heatmap%20with%20Logo.png)
+
+
+
+Conference Championships Preview: expect closer games than we've seen in recent past
+------
+
+From the January 28, 2023 [blog post](https://betweenthepipes.substack.com/p/delta-is-top-carrier-jetblue-worst)
+
+![Betting Favorites](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Championship%20Odds%20with%20Logo.png)
+
+
+![Pythagorean Wins](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Pythagorean%20Wins%20with%20Logo.png)
+
+
+
+Delta is top carrier, JetBlue worst in WSJ Airline Rankings
+------
+
+From the January 22, 2023 [blog post](https://betweenthepipes.substack.com/p/delta-is-top-carrier-jetblue-worst)
+
+![WSJ Airline Rankings](https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Airline%20Rankings.png)
+
+![Rankings Plot Development Process](https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Rankings%20Camcorder.gif)
+
+![2022 Airline Rankings Table](https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/2022%20WSJ%20Airline%20Rankings%20Table.png)
+
+
+Niners-Cowboys will be battle of teams located far from their city namesakes
+-------
+
+From the January 20, 2023 [blog post](https://betweenthepipes.substack.com/p/niners-cowboys-will-be-battle-of)
+
+![NFL Stadium Distances](https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Distance%20Barplot%20with%20Logo.png)
+
+
+
 Collin Morikawa collapses on Sunday at Kapalua
 --------
 
-From the January 8, 2023[blog post](https://betweenthepipes.substack.com/p/collin-morikawa-collapses-on-sunday)
+From the January 8, 2023 [blog post](https://betweenthepipes.substack.com/p/collin-morikawa-collapses-on-sunday)
 
 ![Kapalua](https://raw.githubusercontent.com/steodose/BlogPosts/master/Golf/2023%20Kapalua%20Leaderboard%20Table%20with%20Logo.png)
 
