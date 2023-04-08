@@ -8,7 +8,7 @@ description: |
 Chasing Europe: Brighton and Brentford are small clubs playing for football's biggest stage
 -----
 
-From the April 8, 2023 blog post [blog post](https://betweenthepipes.substack.com/p/chasing-europe-brighton-and-brentford)
+From the April 8, 2023 [blog post](https://betweenthepipes.substack.com/p/chasing-europe-brighton-and-brentford)
 
 ![EPL Bump Chart](https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202022-23/EPL%20Bump%20Chart%20with%20Logo.png)
 
