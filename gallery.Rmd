@@ -4,6 +4,16 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://betweenthepipes.substack.com/), and throughout other projects.
 ---
 
+Men's Grand Slam tennis is taking longer than ever
+-----
+
+From the July 12, 2023 [blog post](https://betweenthepipes.substack.com/p/mens-grand-slam-tennis-is-taking)
+
+![ATP Match Lengths](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20Match%20Lengths%20with%20Logo.png)
+
+![ATP vs WTA](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20vs%20WTA%20Match%20Lengths%20with%20Logo.png)
+
+
 
 Chasing Europe: Brighton and Brentford are small clubs playing for football's biggest stage
 -----
