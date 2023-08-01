@@ -4,6 +4,17 @@ description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://betweenthepipes.substack.com/), and throughout other projects.
 ---
 
+
+MLB attendance is up for the first time in nearly a decade
+-----
+
+From the July 31, 2023 [blog post](https://betweenthepipes.substack.com/p/mlb-attendance-is-up-for-the-first)
+
+![MLB Attendance](https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/MLB%20Attendance%20Plot%20with%20Logo.png)
+
+![NFL is King](https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/NFL%20is%20King%20with%20Logo.png)
+
+
 Men's Grand Slam tennis is taking longer than ever
 -----
 
