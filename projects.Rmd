@@ -100,7 +100,7 @@ create_proj_card(
 
 create_proj_card(
   img_src = "images/nfl-logo.png",
-  url = "https://stephanteodosescu.com/NFL/index.html",
+  url = "https://steodose.github.io/NFL/NFL-Summary-Report.html",
   title = "NFL Analytics",
   text = "Website dedicated to NFL advanced stats and analysis.",
   text2 = NULL
