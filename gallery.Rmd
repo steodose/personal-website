@@ -5,6 +5,21 @@ description: |
 ---
 
 
+How To: Visualizing Nebraska's record-shattering volleyball match
+-----
+
+From the September 3, 2023 [blog post](https://betweenthepipes.substack.com/p/how-to-visualizing-nebraskas-record)
+
+![Nebraska Volleyball](https://raw.githubusercontent.com/steodose/BlogPosts/master/Volleyball/Nebraska%20Attendance.png)
+
+
+The Padres are underperforming both expectations and their underlying numbers
+-----
+
+From the August 12, 2023 [blog post](https://betweenthepipes.substack.com/p/the-padres-are-underperforming-bot)
+
+![MLB Pythagorean](https://raw.githubusercontent.com/steodose/BlogPosts/master/MLB/MLB%20Pythagorean%20Wins%20with%20Logo.png)
+
 MLB attendance is up for the first time in nearly a decade
 -----
 

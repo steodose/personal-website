@@ -20,6 +20,14 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/nfl-logo.png",
+  url = "https://steodose.github.io/NFL/NFL-Summary-Report.html",
+  title = "NFL Analytics",
+  text = "Website dedicated to NFL advanced stats and analysis.",
+  text2 = NULL
+)
+
+create_proj_card(
   img_src = "images/Big 5 Frame.png",
   url = "https://steodosescu.shinyapps.io/Big-5-Leagues/",
   title = "Big 5 Leagues Web App",
@@ -97,15 +105,6 @@ create_proj_card(
   text = "Website dedicated to Formula 1 analytics and visualizaton.",
   text2 = NULL
 )
-
-create_proj_card(
-  img_src = "images/nfl-logo.png",
-  url = "https://steodose.github.io/NFL/NFL-Summary-Report.html",
-  title = "NFL Analytics",
-  text = "Website dedicated to NFL advanced stats and analysis.",
-  text2 = NULL
-)
-
 
 
 
