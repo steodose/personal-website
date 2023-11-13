@@ -20,6 +20,14 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/app_screenshot.png",
+  url = "https://odds-converter.streamlit.app/",
+  title = "Odds Converter Tool",
+  text = "Web app allowing you to convert sports betting odds in different international systems and into implied probabilities.",
+  text2 = NULL
+)
+
+create_proj_card(
   img_src = "images/nfl-logo.png",
   url = "https://steodose.github.io/NFL/NFL-Summary-Report.html",
   title = "NFL Analytics",
