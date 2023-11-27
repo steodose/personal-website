@@ -2,8 +2,20 @@
 title: "Viz Gallery"
 description: |
   Selection of data visuals I've made to go along with blog posts at [Between the Pipes](https://betweenthepipes.substack.com/), and throughout other projects.
+  
 ---
 
+```{r, echo=FALSE}
+library(htmltools)
+
+# insert sign up sheet. Raw HTML code to embed a signup form for my Substack:
+# <iframe src="https://betweenthepipes.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    
+sign_up <-  htmltools::tags$iframe(src="https://betweenthepipes.substack.com/embed", width="480", height="320", style="border:1px solid #EEE")
+
+sign_up
+
+```
 
 How To: Visualizing Nebraska's record-shattering volleyball match
 -----
