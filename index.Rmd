@@ -21,7 +21,9 @@ output:
  
 ## Bio
 
-An analytics professional (read: Data Nerd) with a background rooted at the intersection of engineering, science, and finance. I partner with stakeholders to make processes more efficient and solve their complex business problems using rigorous analysis and data. Prior to joining Apple, I worked in specialty tax consulting at BDO USA, LLP. Before that, I graduated from Cal Poly, San Luis Obispo with a blended BS/MS degree in Biomedical Engineering. My professional interests include business analytics, statistics, finance, tech, and leadership development. I also dabble in sports analytics on the side. 
+An analytics professional (read: Data Nerd) with a background rooted at the intersection of engineering, science, and finance. I partner with stakeholders to make processes more efficient and solve their complex business problems using rigorous analysis and data. Currently, I'm a data analyst within Apple's Finance org where my team is responsible for reimagining our analytical toolsets and internal data products, elevating business analysis from data to insight, and upskilling our partner teams in new data, technology, and processes where appropriate.
+
+Prior to joining Apple, I worked in specialty tax consulting at BDO USA, LLP. Before that, I graduated from Cal Poly, San Luis Obispo with a blended BS/MS degree in Biomedical Engineering. My professional interests include business analytics, statistics, finance, tech, and leadership development. I also dabble in sports analytics on the side. 
 
 ## Education
 
