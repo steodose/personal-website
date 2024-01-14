@@ -36,6 +36,14 @@ create_proj_card(
 )
 
 create_proj_card(
+  img_src = "images/stocks.png",
+  url = "https://steodosescu-stocks.streamlit.app/",
+  title = "S&P 500 Stocks App",
+  text = "Web app allowing you to retrieve stock price information for any company in the S&P 500 Index. Built using the Streamlit framework.",
+  text2 = NULL
+)
+
+create_proj_card(
   img_src = "images/Big 5 Frame.png",
   url = "https://steodosescu.shinyapps.io/Big-5-Leagues/",
   title = "Big 5 Leagues Web App",
