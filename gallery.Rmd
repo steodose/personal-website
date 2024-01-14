@@ -17,11 +17,21 @@ sign_up
 
 ```
 
+
+San Francisco 49ers enter NFL playoffs as Super Bowl favorites
+-----
+From the Janurary 10, 2024 [blog post](https://betweenthepipes.substack.com/p/san-francisco-49ers-enter-nfl-playoffs)
+
+![SB Favorites](https://raw.githubusercontent.com/steodose/NFL/master/2023%20Championship%20Odds%20with%20Logo.png)
+
+![Composite Odds](https://raw.githubusercontent.com/steodose/NFL/master/2023%20NFL%20Playoffs%20Composite%20Rankings%20with%20Logo.png)
+
+
 Introducing the sports betting Odds Converter
 -----
 From the December 3, 2023 [blog post](https://betweenthepipes.substack.com/p/introducing-the-sports-betting-odds)
 
-![Nebraska Volleyball](https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Betting/visualization.png)
+![Sports Betting](https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Betting/visualization.png)
 
 
 How To: Visualizing Nebraska's record-shattering volleyball match
