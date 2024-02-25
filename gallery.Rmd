@@ -18,9 +18,34 @@ sign_up
 ```
 
 
+Locations and dates finalized for 2026 World Cup
+-----
+From the February 5, 2024 [blog post](https://betweenthepipes.substack.com/p/locations-and-dates-finalized-for)
+
+```{r, echo=FALSE}
+library(htmltools)
+
+wc_venues <-  htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/kZSG8/6/", width="555", height="1273", style="border:none")
+
+wc_venues
+
+wc_locations <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/aNaMj/2/", width="600", height="641", style="border:none")
+
+wc_locations
+
+```
+
+
+
+One of the NFL's sorriest franchises has a chance to finally play for the Super Bowl
+-----
+From the January 26, 2024 [blog post](https://betweenthepipes.substack.com/p/one-of-the-nfls-sorriest-franchises)
+
+![Lions Elo](https://github.com/steodose/BlogPosts/blob/master/NFL%202023/NFL_elo_lineplot%20with%20Logo.png?raw=true)
+
 San Francisco 49ers enter NFL playoffs as Super Bowl favorites
 -----
-From the Janurary 10, 2024 [blog post](https://betweenthepipes.substack.com/p/san-francisco-49ers-enter-nfl-playoffs)
+From the January 10, 2024 [blog post](https://betweenthepipes.substack.com/p/san-francisco-49ers-enter-nfl-playoffs)
 
 ![SB Favorites](https://raw.githubusercontent.com/steodose/NFL/master/2023%20Championship%20Odds%20with%20Logo.png)
 
@@ -68,6 +93,13 @@ From the July 12, 2023 [blog post](https://betweenthepipes.substack.com/p/mens-g
 
 ![ATP vs WTA](https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20vs%20WTA%20Match%20Lengths%20with%20Logo.png)
 
+
+<!-- Canada is still waiting for its first Stanley Cup in nearly 30 years -->
+<!-- ----- -->
+
+<!-- From the April 20, 2023 [blog post](https://betweenthepipes.substack.com/p/canada-is-still-waiting-for-its-first) -->
+
+<!-- ![Canada Waffles](url goes here) -->
 
 
 Chasing Europe: Brighton and Brentford are small clubs playing for football's biggest stage
