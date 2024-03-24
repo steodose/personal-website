@@ -18,6 +18,21 @@ sign_up
 ```
 
 
+The Premier League is properly showing out this season
+-----
+From the March 9, 2024 [blog post](https://betweenthepipes.substack.com/p/the-premier-league-is-properly-showing)
+
+```{r, echo=FALSE}
+library(htmltools)
+
+epl_goals <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/hzfW5/2/", width="600", height="400", style="border:none")
+
+epl_goals
+
+```
+
+
+
 Locations and dates finalized for 2026 World Cup
 -----
 From the February 5, 2024 [blog post](https://betweenthepipes.substack.com/p/locations-and-dates-finalized-for)
