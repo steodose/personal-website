@@ -18,6 +18,16 @@ sign_up
 ```
 
 
+
+Nobody saw its knockout chances improve more through the first round of matches than Romania
+-----
+From the June 19, 2024 [blog post](https://betweenthepipes.substack.com/p/nobody-saw-its-knockout-chances-improve)
+
+![Euro 2024](https://github.com/steodose/Euros-2024/blob/master/Knockout%20Chances%20Plot%20with%20Logo.png?raw=true)
+
+
+
+
 The Premier League is properly showing out this season
 -----
 From the March 9, 2024 [blog post](https://betweenthepipes.substack.com/p/the-premier-league-is-properly-showing)
@@ -30,7 +40,6 @@ epl_goals <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/hzfW5/2/"
 epl_goals
 
 ```
-
 
 
 Locations and dates finalized for 2026 World Cup
