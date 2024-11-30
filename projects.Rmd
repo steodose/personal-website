@@ -16,8 +16,15 @@ source("R/create_proj_card.R")
 
 
 
-
 ```{r}
+
+create_proj_card(
+  img_src = "/Users/Stephan/Desktop/R Projects/personal-website/images/Dashboard (3).png",
+  url = "https://public.tableau.com/app/profile/stephan.teodosescu/viz/NFLCharterFlights/Dashboard",
+  title = "NFL Charter Flights",
+  text = "Tableau: Dashboard exploring NFL team charter flight patterns. Created using Tableau Public.",
+  text2 = NULL
+)
 
 create_proj_card(
   img_src = "images/sg_table.png",
