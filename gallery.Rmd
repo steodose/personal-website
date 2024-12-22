@@ -18,6 +18,32 @@ sign_up
 ```
 
 
+When watching sports on TV how much action are we really getting?
+-----
+From the December 22, 2024 [blog post](https://betweenthepipes.substack.com/p/when-watching-sports-on-tv-how-much)
+
+```{r, echo=FALSE}
+library(htmltools)
+
+sports_action <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/WCOSk/10/", width="600", height="400", style="border:none")
+
+sports_action
+
+
+soccer_action <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/5wGJh/3/", width="600", height="400", style="border:none")
+
+
+soccer_action
+
+cfb_action <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/eeFnj/6/", width="600", height="400", style="border:none")
+
+cfb_action
+
+```
+
+![Game Durations](https://github.com/steodose/BlogPosts/blob/master/Game%20Durations/Game%20Timings%20with%20Logo.png?raw=true)
+
+
 
 Nobody saw its knockout chances improve more through the first round of matches than Romania
 -----
