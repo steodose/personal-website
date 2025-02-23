@@ -18,6 +18,15 @@ sign_up
 ```
 
 
+Taking stock of the NHL at the 4 Nations break
+----
+From the Feb 17, 2025 [blog post](https://betweenthepipes.substack.com/p/taking-stock-of-the-nhl-at-the-4)
+![NHL Elo Ranks](https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Elo%20Rankings%20with%20Logo%205.png)
+
+![Ovi](https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Ovechkin%20with%20Logo.png)
+
+![Ovi vs Gretzky](https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Goals%20per%20Season%20with%20Logo.png)
+
 When watching sports on TV how much action are we really getting?
 -----
 From the December 22, 2024 [blog post](https://betweenthepipes.substack.com/p/when-watching-sports-on-tv-how-much)
@@ -43,6 +52,12 @@ cfb_action
 
 ![Game Durations](https://github.com/steodose/BlogPosts/blob/master/Game%20Durations/Game%20Timings%20with%20Logo.png?raw=true)
 
+
+How To: NFL Playoff Leverage Charts
+-----
+From the November 24, 2024 [blog post](https://betweenthepipes.substack.com/p/how-to-nfl-playoff-leverage-charts)
+
+![Playoff Leverage](https://raw.githubusercontent.com/steodose/NFL/refs/heads/master/Playoff%20Leverage%20with%20Logo.png)
 
 
 Nobody saw its knockout chances improve more through the first round of matches than Romania
