@@ -19,6 +19,15 @@ source("R/create_proj_card.R")
 ```{r}
 
 create_proj_card(
+  img_src = "images/fred-logo.svg",
+  url = "https://steodose.github.io/macro-trends/",
+  title = "Macro Pulse",
+  text = "Website dedicated to economic and financial analysis using data provided by the Federal Reserve Economic Database (FRED).",
+  text2 = NULL
+)
+
+
+create_proj_card(
   img_src = "images/MLB Grouped.png",
   url = "https://steodose.github.io/MLB/MLB-Summary.html",
   title = "MLB Analytics",

@@ -21,7 +21,7 @@
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -32,7 +32,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -458,8 +458,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
 
   <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
   <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
   <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
@@ -829,9 +829,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     display: none !important;
   }
 
+  hr.section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+
+
+  d-byline {
+    border-top: none;
+  }
+
   d-article {
     padding-top: 2.5rem;
     padding-bottom: 30px;
+    border-top: none;
   }
 
   d-appendix {
@@ -926,6 +938,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article div.sourceCode pre {
     padding-left: 18px;
     font-size: 14px;
+  }
+
+  /* tweak for Pandoc numbered line within distill */
+  d-article pre.numberSource code > span {
+      left: -2em;
   }
 
   d-article pre {
@@ -1687,6 +1704,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // create d-title
     $('.d-title').changeElementType('d-title');
 
+    // separator
+    var separator = '<hr class="section-separator" style="clear: both"/>';
+    // prepend separator above appendix
+    $('.d-byline').before(separator);
+    $('.d-article').before(separator);
+
     // create d-byline
     var byline = $('<d-byline></d-byline>');
     $('.d-byline').replaceWith(byline);
@@ -1764,8 +1787,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     $('.distill-force-highlighting-css').parent().remove();
 
     // remove empty line numbers inserted by pandoc when using a
-    // custom syntax highlighting theme
-    $('code.sourceCode a:empty').remove();
+    // custom syntax highlighting theme, except when numbering line
+    // in code chunk
+    $('pre:not(.numberLines) code.sourceCode a:empty').remove();
 
     // load distill framework
     load_distill_framework();
@@ -1791,12 +1815,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // add orcid ids
       $('.authors-affiliations').find('.author').each(function(i, el) {
         var orcid_id = front_matter.authors[i].orcidID;
+        var author_name = front_matter.authors[i].author
         if (orcid_id) {
           var a = $('<a></a>');
           a.attr('href', 'https://orcid.org/' + orcid_id);
           var img = $('<img></img>');
           img.addClass('orcid-id');
-          img.attr('alt', 'ORCID ID');
+          img.attr('alt', author_name ? 'ORCID ID for ' + author_name : 'ORCID ID');
           img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
           a.append(img);
           $(this).append(a);
@@ -2442,7 +2467,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     color: var(--hover-color, white);
   }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2489,6 +2514,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-title">
 <h1>Viz Gallery</h1>
+
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>Selection of data visuals I’ve made to go along with blog posts at <a href="https://betweenthepipes.substack.com/">Between the Pipes</a>, and throughout other projects.</p></p>
@@ -2499,14 +2525,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 <iframe src="https://betweenthepipes.substack.com/embed" width="480" height="320" style="border:1px solid #EEE"></iframe>
 </div>
+<h2 id="how-mlb-stadiums-are-playing-this-season">How MLB stadiums are playing this season</h2>
+<p>From the July 23, 2025<a href="https://betweenthepipes.substack.com/p/how-mlb-stadiums-are-playing-this">blog post</a>
+<img src="https://raw.githubusercontent.com/steodose/MLB/refs/heads/main/MLB%20Stadium%20Weather%20Rankings%20with%20Logo.png" alt="MLB Weather" /></p>
 <h2 id="taking-stock-of-the-nhl-at-the-4-nations-break">Taking stock of the NHL at the 4 Nations break</h2>
 <p>From the Feb 17, 2025 <a href="https://betweenthepipes.substack.com/p/taking-stock-of-the-nhl-at-the-4">blog post</a>
 <img src="https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Elo%20Rankings%20with%20Logo%205.png" alt="NHL Elo Ranks" /></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Ovechkin%20with%20Logo.png" alt="Ovi" /><figcaption aria-hidden="true">Ovi</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Ovechkin%20with%20Logo.png" alt="Ovi" />
+<figcaption aria-hidden="true">Ovi</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Goals%20per%20Season%20with%20Logo.png" alt="Ovi vs Gretzky" /><figcaption aria-hidden="true">Ovi vs Gretzky</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/refs/heads/master/NHL%202024/Goals%20per%20Season%20with%20Logo.png" alt="Ovi vs Gretzky" />
+<figcaption aria-hidden="true">Ovi vs Gretzky</figcaption>
 </figure>
 <h2 id="when-watching-sports-on-tv-how-much-action-are-we-really-getting">When watching sports on TV how much action are we really getting?</h2>
 <p>From the December 22, 2024 <a href="https://betweenthepipes.substack.com/p/when-watching-sports-on-tv-how-much">blog post</a></p>
@@ -2516,17 +2547,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <iframe src="https://datawrapper.dwcdn.net/eeFnj/6/" width="600" height="400" style="border:none"></iframe>
 </div>
 <figure>
-<img src="https://github.com/steodose/BlogPosts/blob/master/Game%20Durations/Game%20Timings%20with%20Logo.png?raw=true" alt="Game Durations" /><figcaption aria-hidden="true">Game Durations</figcaption>
+<img src="https://github.com/steodose/BlogPosts/blob/master/Game%20Durations/Game%20Timings%20with%20Logo.png?raw=true" alt="Game Durations" />
+<figcaption aria-hidden="true">Game Durations</figcaption>
 </figure>
 <h2 id="how-to-nfl-playoff-leverage-charts">How To: NFL Playoff Leverage Charts</h2>
 <p>From the November 24, 2024 <a href="https://betweenthepipes.substack.com/p/how-to-nfl-playoff-leverage-charts">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/refs/heads/master/Playoff%20Leverage%20with%20Logo.png" alt="Playoff Leverage" /><figcaption aria-hidden="true">Playoff Leverage</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/refs/heads/master/Playoff%20Leverage%20with%20Logo.png" alt="Playoff Leverage" />
+<figcaption aria-hidden="true">Playoff Leverage</figcaption>
 </figure>
 <h2 id="nobody-saw-its-knockout-chances-improve-more-through-the-first-round-of-matches-than-romania">Nobody saw its knockout chances improve more through the first round of matches than Romania</h2>
 <p>From the June 19, 2024 <a href="https://betweenthepipes.substack.com/p/nobody-saw-its-knockout-chances-improve">blog post</a></p>
 <figure>
-<img src="https://github.com/steodose/Euros-2024/blob/master/Knockout%20Chances%20Plot%20with%20Logo.png?raw=true" alt="Euro 2024" /><figcaption aria-hidden="true">Euro 2024</figcaption>
+<img src="https://github.com/steodose/Euros-2024/blob/master/Knockout%20Chances%20Plot%20with%20Logo.png?raw=true" alt="Euro 2024" />
+<figcaption aria-hidden="true">Euro 2024</figcaption>
 </figure>
 <h2 id="the-premier-league-is-properly-showing-out-this-season">The Premier League is properly showing out this season</h2>
 <p>From the March 9, 2024 <a href="https://betweenthepipes.substack.com/p/the-premier-league-is-properly-showing">blog post</a></p>
@@ -2542,348 +2576,437 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="one-of-the-nfls-sorriest-franchises-has-a-chance-to-finally-play-for-the-super-bowl">One of the NFL’s sorriest franchises has a chance to finally play for the Super Bowl</h2>
 <p>From the January 26, 2024 <a href="https://betweenthepipes.substack.com/p/one-of-the-nfls-sorriest-franchises">blog post</a></p>
 <figure>
-<img src="https://github.com/steodose/BlogPosts/blob/master/NFL%202023/NFL_elo_lineplot%20with%20Logo.png?raw=true" alt="Lions Elo" /><figcaption aria-hidden="true">Lions Elo</figcaption>
+<img src="https://github.com/steodose/BlogPosts/blob/master/NFL%202023/NFL_elo_lineplot%20with%20Logo.png?raw=true" alt="Lions Elo" />
+<figcaption aria-hidden="true">Lions Elo</figcaption>
 </figure>
 <h2 id="san-francisco-49ers-enter-nfl-playoffs-as-super-bowl-favorites">San Francisco 49ers enter NFL playoffs as Super Bowl favorites</h2>
 <p>From the January 10, 2024 <a href="https://betweenthepipes.substack.com/p/san-francisco-49ers-enter-nfl-playoffs">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/master/2023%20Championship%20Odds%20with%20Logo.png" alt="SB Favorites" /><figcaption aria-hidden="true">SB Favorites</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/master/2023%20Championship%20Odds%20with%20Logo.png" alt="SB Favorites" />
+<figcaption aria-hidden="true">SB Favorites</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/master/2023%20NFL%20Playoffs%20Composite%20Rankings%20with%20Logo.png" alt="Composite Odds" /><figcaption aria-hidden="true">Composite Odds</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/master/2023%20NFL%20Playoffs%20Composite%20Rankings%20with%20Logo.png" alt="Composite Odds" />
+<figcaption aria-hidden="true">Composite Odds</figcaption>
 </figure>
 <h2 id="introducing-the-sports-betting-odds-converter">Introducing the sports betting Odds Converter</h2>
 <p>From the December 3, 2023 <a href="https://betweenthepipes.substack.com/p/introducing-the-sports-betting-odds">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Betting/visualization.png" alt="Sports Betting" /><figcaption aria-hidden="true">Sports Betting</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Betting/visualization.png" alt="Sports Betting" />
+<figcaption aria-hidden="true">Sports Betting</figcaption>
 </figure>
 <h2 id="how-to-visualizing-nebraskas-record-shattering-volleyball-match">How To: Visualizing Nebraska’s record-shattering volleyball match</h2>
 <p>From the September 3, 2023 <a href="https://betweenthepipes.substack.com/p/how-to-visualizing-nebraskas-record">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Volleyball/Nebraska%20Attendance.png" alt="Nebraska Volleyball" /><figcaption aria-hidden="true">Nebraska Volleyball</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Volleyball/Nebraska%20Attendance.png" alt="Nebraska Volleyball" />
+<figcaption aria-hidden="true">Nebraska Volleyball</figcaption>
 </figure>
 <h2 id="the-padres-are-underperforming-both-expectations-and-their-underlying-numbers">The Padres are underperforming both expectations and their underlying numbers</h2>
 <p>From the August 12, 2023 <a href="https://betweenthepipes.substack.com/p/the-padres-are-underperforming-bot">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/MLB/MLB%20Pythagorean%20Wins%20with%20Logo.png" alt="MLB Pythagorean" /><figcaption aria-hidden="true">MLB Pythagorean</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/MLB/MLB%20Pythagorean%20Wins%20with%20Logo.png" alt="MLB Pythagorean" />
+<figcaption aria-hidden="true">MLB Pythagorean</figcaption>
 </figure>
 <h2 id="mlb-attendance-is-up-for-the-first-time-in-nearly-a-decade">MLB attendance is up for the first time in nearly a decade</h2>
 <p>From the July 31, 2023 <a href="https://betweenthepipes.substack.com/p/mlb-attendance-is-up-for-the-first">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/MLB%20Attendance%20Plot%20with%20Logo.png" alt="MLB Attendance" /><figcaption aria-hidden="true">MLB Attendance</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/MLB%20Attendance%20Plot%20with%20Logo.png" alt="MLB Attendance" />
+<figcaption aria-hidden="true">MLB Attendance</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/NFL%20is%20King%20with%20Logo.png" alt="NFL is King" /><figcaption aria-hidden="true">NFL is King</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Attendance/NFL%20is%20King%20with%20Logo.png" alt="NFL is King" />
+<figcaption aria-hidden="true">NFL is King</figcaption>
 </figure>
 <h2 id="mens-grand-slam-tennis-is-taking-longer-than-ever">Men’s Grand Slam tennis is taking longer than ever</h2>
 <p>From the July 12, 2023 <a href="https://betweenthepipes.substack.com/p/mens-grand-slam-tennis-is-taking">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20Match%20Lengths%20with%20Logo.png" alt="ATP Match Lengths" /><figcaption aria-hidden="true">ATP Match Lengths</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20Match%20Lengths%20with%20Logo.png" alt="ATP Match Lengths" />
+<figcaption aria-hidden="true">ATP Match Lengths</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20vs%20WTA%20Match%20Lengths%20with%20Logo.png" alt="ATP vs WTA" /><figcaption aria-hidden="true">ATP vs WTA</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/ATP%20vs%20WTA%20Match%20Lengths%20with%20Logo.png" alt="ATP vs WTA" />
+<figcaption aria-hidden="true">ATP vs WTA</figcaption>
 </figure>
 <h2 id="canada-is-still-waiting-for-its-first-stanley-cup-in-nearly-30-years">Canada is still waiting for its first Stanley Cup in nearly 30 years</h2>
 <p>From the April 20, 2023 <a href="https://betweenthepipes.substack.com/p/canada-is-still-waiting-for-its-first">blog post</a></p>
 <figure>
-<img src="https://github.com/steodose/BlogPosts/blob/master/NHL%202023/Canada%20Curse%20with%20Logo.png?raw=true" alt="Canada Waffles" /><figcaption aria-hidden="true">Canada Waffles</figcaption>
+<img src="https://github.com/steodose/BlogPosts/blob/master/NHL%202023/Canada%20Curse%20with%20Logo.png?raw=true" alt="Canada Waffles" />
+<figcaption aria-hidden="true">Canada Waffles</figcaption>
 </figure>
 <h2 id="chasing-europe-brighton-and-brentford-are-small-clubs-playing-for-footballs-biggest-stage">Chasing Europe: Brighton and Brentford are small clubs playing for football’s biggest stage</h2>
 <p>From the April 8, 2023 <a href="https://betweenthepipes.substack.com/p/chasing-europe-brighton-and-brentford">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202022-23/EPL%20Bump%20Chart%20with%20Logo.png" alt="EPL Bump Chart" /><figcaption aria-hidden="true">EPL Bump Chart</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202022-23/EPL%20Bump%20Chart%20with%20Logo.png" alt="EPL Bump Chart" />
+<figcaption aria-hidden="true">EPL Bump Chart</figcaption>
 </figure>
 <h2 id="hunting-for-value-in-picking-march-madness-winners">Hunting for value in picking March Madness winners</h2>
 <p>From the March 14, 2023 <a href="https://betweenthepipes.substack.com/p/hunting-for-value-in-picking-march">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Value%20Picks%20with%20Logo.png" alt="March Madness Value Picks" /><figcaption aria-hidden="true">March Madness Value Picks</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Value%20Picks%20with%20Logo.png" alt="March Madness Value Picks" />
+<figcaption aria-hidden="true">March Madness Value Picks</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20NCAA%20Efficiency%20Ratings%20with%20Logo.png" alt="Efficiency Ratings" /><figcaption aria-hidden="true">Efficiency Ratings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20NCAA%20Efficiency%20Ratings%20with%20Logo.png" alt="Efficiency Ratings" />
+<figcaption aria-hidden="true">Efficiency Ratings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Conference%20Ratings.png%20with%20Logo.png" alt="Conference Ratings" /><figcaption aria-hidden="true">Conference Ratings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Conference%20Ratings.png%20with%20Logo.png" alt="Conference Ratings" />
+<figcaption aria-hidden="true">Conference Ratings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Experts%20vs%20Crowds%20Table%20with%20Logo.png" alt="2023 Experts vs Crowds Table" /><figcaption aria-hidden="true">2023 Experts vs Crowds Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202023/2023%20Experts%20vs%20Crowds%20Table%20with%20Logo.png" alt="2023 Experts vs Crowds Table" />
+<figcaption aria-hidden="true">2023 Experts vs Crowds Table</figcaption>
 </figure>
 <h2 id="the-super-bowl-was-the-game-we-deserved">The Super Bowl was the game we deserved</h2>
 <p>From the February 13, 2023 <a href="https://betweenthepipes.substack.com/p/the-super-bowl-was-the-game-we-deserved">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/WP%20Plot%20with%20Logo.png" alt="Super Bowl Win Prob" /><figcaption aria-hidden="true">Super Bowl Win Prob</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/WP%20Plot%20with%20Logo.png" alt="Super Bowl Win Prob" />
+<figcaption aria-hidden="true">Super Bowl Win Prob</figcaption>
 </figure>
 <h2 id="how-to-visualize-big-tech-stocks-the-tidy-tuesday-way">How To: Visualize Big Tech Stocks the Tidy Tuesday Way</h2>
 <p>From the February 12, 2023 <a href="https://betweenthepipes.substack.com/p/how-to-visualize-big-tech-stocks">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/W6_Big%20Tech%20Patchwork.png" alt="Big Tech has Gotten Bigger" /><figcaption aria-hidden="true">Big Tech has Gotten Bigger</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/W6_Big%20Tech%20Patchwork.png" alt="Big Tech has Gotten Bigger" />
+<figcaption aria-hidden="true">Big Tech has Gotten Bigger</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/hindsight-bias.gif" alt="Stocks Animated" /><figcaption aria-hidden="true">Stocks Animated</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/2023/hindsight-bias.gif" alt="Stocks Animated" />
+<figcaption aria-hidden="true">Stocks Animated</figcaption>
 </figure>
 <h2 id="complete-guide-to-super-bowl-squares-lvii-edition">Complete Guide to Super Bowl Squares: LVII Edition</h2>
 <p>From the February 11, 2023 <a href="https://betweenthepipes.substack.com/p/complete-guide-to-super-bowl-squares">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Squares%20Heatmap%20with%20Logo.png" alt="Super Bowl LVII Squares" /><figcaption aria-hidden="true">Super Bowl LVII Squares</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Squares%20Heatmap%20with%20Logo.png" alt="Super Bowl LVII Squares" />
+<figcaption aria-hidden="true">Super Bowl LVII Squares</figcaption>
 </figure>
 <h2 id="conference-championships-preview-expect-closer-games-than-weve-seen-in-recent-past">Conference Championships Preview: expect closer games than we’ve seen in recent past</h2>
 <p>From the January 28, 2023 <a href="https://betweenthepipes.substack.com/p/delta-is-top-carrier-jetblue-worst">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Championship%20Odds%20with%20Logo.png" alt="Betting Favorites" /><figcaption aria-hidden="true">Betting Favorites</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Championship%20Odds%20with%20Logo.png" alt="Betting Favorites" />
+<figcaption aria-hidden="true">Betting Favorites</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Pythagorean%20Wins%20with%20Logo.png" alt="Pythagorean Wins" /><figcaption aria-hidden="true">Pythagorean Wins</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Pythagorean%20Wins%20with%20Logo.png" alt="Pythagorean Wins" />
+<figcaption aria-hidden="true">Pythagorean Wins</figcaption>
 </figure>
 <h2 id="delta-is-top-carrier-jetblue-worst-in-wsj-airline-rankings">Delta is top carrier, JetBlue worst in WSJ Airline Rankings</h2>
 <p>From the January 22, 2023 <a href="https://betweenthepipes.substack.com/p/delta-is-top-carrier-jetblue-worst">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Airline%20Rankings.png" alt="WSJ Airline Rankings" /><figcaption aria-hidden="true">WSJ Airline Rankings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Airline%20Rankings.png" alt="WSJ Airline Rankings" />
+<figcaption aria-hidden="true">WSJ Airline Rankings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Rankings%20Camcorder.gif" alt="Rankings Plot Development Process" /><figcaption aria-hidden="true">Rankings Plot Development Process</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/WSJ%20Rankings%20Camcorder.gif" alt="Rankings Plot Development Process" />
+<figcaption aria-hidden="true">Rankings Plot Development Process</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/2022%20WSJ%20Airline%20Rankings%20Table.png" alt="2022 Airline Rankings Table" /><figcaption aria-hidden="true">2022 Airline Rankings Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Flights/2022%20WSJ%20Airline%20Rankings%20Table.png" alt="2022 Airline Rankings Table" />
+<figcaption aria-hidden="true">2022 Airline Rankings Table</figcaption>
 </figure>
 <h2 id="niners-cowboys-will-be-battle-of-teams-located-far-from-their-city-namesakes">Niners-Cowboys will be battle of teams located far from their city namesakes</h2>
 <p>From the January 20, 2023 <a href="https://betweenthepipes.substack.com/p/niners-cowboys-will-be-battle-of">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Distance%20Barplot%20with%20Logo.png" alt="NFL Stadium Distances" /><figcaption aria-hidden="true">NFL Stadium Distances</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Distance%20Barplot%20with%20Logo.png" alt="NFL Stadium Distances" />
+<figcaption aria-hidden="true">NFL Stadium Distances</figcaption>
 </figure>
 <h2 id="collin-morikawa-collapses-on-sunday-at-kapalua">Collin Morikawa collapses on Sunday at Kapalua</h2>
 <p>From the January 8, 2023 <a href="https://betweenthepipes.substack.com/p/collin-morikawa-collapses-on-sunday">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Golf/2023%20Kapalua%20Leaderboard%20Table%20with%20Logo.png" alt="Kapalua" /><figcaption aria-hidden="true">Kapalua</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Golf/2023%20Kapalua%20Leaderboard%20Table%20with%20Logo.png" alt="Kapalua" />
+<figcaption aria-hidden="true">Kapalua</figcaption>
 </figure>
 <h2 id="nfl-games-are-tighter-and-more-exciting-this-year">NFL games are tighter and more exciting this year</h2>
 <p>From the December 24, 2022 <a href="https://between-the-pipes.com/2022/12/24/nfl-games-are-tighter-and-more-exciting-this-year/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Scoring%20Diferential%20Boxplot%20with%20Logo.png" alt="NFL Point Distribution" /><figcaption aria-hidden="true">NFL Point Distribution</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Scoring%20Diferential%20Boxplot%20with%20Logo.png" alt="NFL Point Distribution" />
+<figcaption aria-hidden="true">NFL Point Distribution</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Game%20Excitement%20Index%20with%20Logo.png" alt="NFL GEI" /><figcaption aria-hidden="true">NFL GEI</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/NFL%20Game%20Excitement%20Index%20with%20Logo.png" alt="NFL GEI" />
+<figcaption aria-hidden="true">NFL GEI</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/2022%20Reg%20Season%20GEI%20Table%20with%20Logo.png" alt="GEI Table" /><figcaption aria-hidden="true">GEI Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/2022%20Reg%20Season%20GEI%20Table%20with%20Logo.png" alt="GEI Table" />
+<figcaption aria-hidden="true">GEI Table</figcaption>
 </figure>
 <h2 id="jimmy-garoppolo-is-a-better-qb-then-people-think-but-the-49ers-can-win-without-him">Jimmy Garoppolo is a better QB then people think, but the 49ers can win without him</h2>
 <p>From the December 11, 2022 <a href="https://between-the-pipes.com/2022/12/11/jimmy-garoppolo-is-a-better-qb-then-people-think-but-the-49ers-can-win-without-him/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/QB%20Summary%20Table.png" alt="QB Summary" /><figcaption aria-hidden="true">QB Summary</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/QB%20Summary%20Table.png" alt="QB Summary" />
+<figcaption aria-hidden="true">QB Summary</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/EPA%20Plot%20with%20Logo.png" alt="2022 EPA Tiers" /><figcaption aria-hidden="true">2022 EPA Tiers</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/EPA%20Plot%20with%20Logo.png" alt="2022 EPA Tiers" />
+<figcaption aria-hidden="true">2022 EPA Tiers</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/49ers%20EPA%20Ranks.png" alt="49ers EPA Ranks" /><figcaption aria-hidden="true">49ers EPA Ranks</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/NFL/master/2022/49ers%20EPA%20Ranks.png" alt="49ers EPA Ranks" />
+<figcaption aria-hidden="true">49ers EPA Ranks</figcaption>
 </figure>
 <h2 id="nhl-season-preview-avalanche-favored-to-repeat-as-stanley-cup-champs-and-other-storylines">NHL Season Preview: Avalanche favored to repeat as Stanley Cup champs, and other storylines</h2>
 <p>From the October 17, 2022 <a href="https://between-the-pipes.com/2022/10/17/nhl-season-preview-avalanche-favored-to-repeat-as-stanley-cup-champs-and-other-storylines/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23.png" alt="2023 NHL Point Totals" /><figcaption aria-hidden="true">2023 NHL Point Totals</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23.png" alt="2023 NHL Point Totals" />
+<figcaption aria-hidden="true">2023 NHL Point Totals</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23%20with%20Logo.png" alt="Strength of Schedule" /><figcaption aria-hidden="true">Strength of Schedule</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/NHL%20Points%20Totals%202022-23%20with%20Logo.png" alt="Strength of Schedule" />
+<figcaption aria-hidden="true">Strength of Schedule</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/2022-23%20NHL%20Points%20Table.png" alt="Cup Odds Table" /><figcaption aria-hidden="true">Cup Odds Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202023/2022-23%20NHL%20Points%20Table.png" alt="Cup Odds Table" />
+<figcaption aria-hidden="true">Cup Odds Table</figcaption>
 </figure>
 <h2 id="pickleball-is-taking-the-country-by-storm">Pickleball is taking the country by storm</h2>
 <p>From the October 3, 2022 <a href="https://between-the-pipes.com/2022/10/03/pickleball-is-taking-the-country-by-storm/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Pickleball/Pickleball%20Interest%20with%20Logo.png" alt="Pickleball" /><figcaption aria-hidden="true">Pickleball</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Pickleball/Pickleball%20Interest%20with%20Logo.png" alt="Pickleball" />
+<figcaption aria-hidden="true">Pickleball</figcaption>
 </figure>
 <h2 id="quick-hits-2022-nfl-win-totals-and-championship-expectations">Quick Hits: 2022 NFL win totals and championship expectations</h2>
 <p>From the September 11, 2022 <a href="https://between-the-pipes.com/2022/09/11/quick-hits-2022-nfl-win-totals-and-championship-expectations/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20Barplot%20with%20Logo.png" alt="2022 NFL Win Totals" /><figcaption aria-hidden="true">2022 NFL Win Totals</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20Barplot%20with%20Logo.png" alt="2022 NFL Win Totals" />
+<figcaption aria-hidden="true">2022 NFL Win Totals</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20over%20Expected%20Barplot%20with%20Logo.png" alt="NFL Win Totals Trending" /><figcaption aria-hidden="true">NFL Win Totals Trending</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/Win%20Totals%20over%20Expected%20Barplot%20with%20Logo.png" alt="NFL Win Totals Trending" />
+<figcaption aria-hidden="true">NFL Win Totals Trending</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/conf_odds_2022_23.png" alt="Conference Odds Table" /><figcaption aria-hidden="true">Conference Odds Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202022/conf_odds_2022_23.png" alt="Conference Odds Table" />
+<figcaption aria-hidden="true">Conference Odds Table</figcaption>
 </figure>
 <h2 id="r-can-do-pretty-much-everything-even-visualize-leos-dating-timeline">R can do pretty much everything, even visualize Leo’s dating timeline</h2>
 <p>From the August 31, 2022 <a href="https://between-the-pipes.com/2022/08/31/r-can-do-pretty-much-everything-even-visualize-leos-dating-timeline/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Leo/dicaprio-gfs.png" alt="DiCaprio GFs" /><figcaption aria-hidden="true">DiCaprio GFs</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Leo/dicaprio-gfs.png" alt="DiCaprio GFs" />
+<figcaption aria-hidden="true">DiCaprio GFs</figcaption>
 </figure>
 <h2 id="ferrari-has-been-dominant-in-qualifying-but-strategic-mistakes-and-reliability-have-plagued-it-on-race-day">Ferrari has been dominant in qualifying, but strategic mistakes and reliability have plagued it on race day</h2>
 <p>From the August 6, 2022 <a href="https://between-the-pipes.com/2022/08/06/ferrari-has-been-dominant-in-qualifying-but-strategic-mistakes-and-reliability-have-plagued-it-on-race-day/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Boxplot%20Plot%20with%20Logo.png" alt="Constructors Boxplot" /><figcaption aria-hidden="true">Constructors Boxplot</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Boxplot%20Plot%20with%20Logo.png" alt="Constructors Boxplot" />
+<figcaption aria-hidden="true">Constructors Boxplot</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Dumbbell%20Plot%20with%20Logo.png" alt="Constructors Dumbbell Plot" /><figcaption aria-hidden="true">Constructors Dumbbell Plot</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/F1/master/Constructors%20Dumbbell%20Plot%20with%20Logo.png" alt="Constructors Dumbbell Plot" />
+<figcaption aria-hidden="true">Constructors Dumbbell Plot</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/F1/master/Race%20Results%20Table.png" alt="Race Results Table" /><figcaption aria-hidden="true">Race Results Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/F1/master/Race%20Results%20Table.png" alt="Race Results Table" />
+<figcaption aria-hidden="true">Race Results Table</figcaption>
 </figure>
 <h2 id="tidy-tuesday-submission-european-flights">Tidy Tuesday submission: European flights</h2>
 <p>From the July 19, 2022 <a href="https://between-the-pipes.com/2022/07/19/tidy-tuesday-submission-european-flights/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/European%20Flights%20Patchwork%20with%20Logo.png" alt="Euro Flights" /><figcaption aria-hidden="true">Euro Flights</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/European%20Flights%20Patchwork%20with%20Logo.png" alt="Euro Flights" />
+<figcaption aria-hidden="true">Euro Flights</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/Monthly%20European%20Flights%20Table%20with%20Logo.png" alt="Monthly Flights" /><figcaption aria-hidden="true">Monthly Flights</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/Tidy-Tuesday/master/Monthly%20European%20Flights%20Table%20with%20Logo.png" alt="Monthly Flights" />
+<figcaption aria-hidden="true">Monthly Flights</figcaption>
 </figure>
 <h2 id="djokovic-cruises-to-another-grand-slam-title-while-rybakina-of-kazakhstan-surprises-in-a-classic-wimbledon-final-weekend">Djokovic cruises to another Grand Slam title, while Rybakina of Kazakhstan surprises in a classic Wimbledon final weekend</h2>
 <p>From the July 13, 2022 <a href="https://between-the-pipes.com/2022/07/13/djokovic-cruises-to-another-grand-slam-title-while-rybakina-of-kazakhstan-surprises-in-a-classic-wimbledon-final-weekend/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Men&#39;s%20Wimbledon%20Frame.png" alt="Tennis Grand Slams" /><figcaption aria-hidden="true">Tennis Grand Slams</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Men&#39;s%20Wimbledon%20Frame.png" alt="Tennis Grand Slams" />
+<figcaption aria-hidden="true">Tennis Grand Slams</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Grand%20Slams%20Table%20with%20Logo.png" alt="Grand Slams Table" /><figcaption aria-hidden="true">Grand Slams Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Tennis/Grand%20Slams%20Table%20with%20Logo.png" alt="Grand Slams Table" />
+<figcaption aria-hidden="true">Grand Slams Table</figcaption>
 </figure>
 <h2 id="the-nba-playoffs-have-been-a-real-snooze-this-year">The NBA playoffs have been a real snooze this year</h2>
 <p>From the May 27, 2022 <a href="https://between-the-pipes.com/2022/05/27/the-nba-playoffs-have-been-a-real-snooze-this-year/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NBA/Blowouts%20Chicklet%20Chart%20with%20Logo.png" alt="Playoff Blowouts" /><figcaption aria-hidden="true">Playoff Blowouts</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NBA/Blowouts%20Chicklet%20Chart%20with%20Logo.png" alt="Playoff Blowouts" />
+<figcaption aria-hidden="true">Playoff Blowouts</figcaption>
 </figure>
 <h2 id="the-battle-of-alberta-is-back-and-goaltending-is-optional">The Battle of Alberta is back, and goaltending is optional</h2>
 <p>From the May 21, 2022 <a href="https://between-the-pipes.com/2022/05/21/the-battle-of-alberta-is-back-and-goaltending-is-optional/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Elo%20Lineplot%20Frame%20(Figma).png" alt="Battle of Alberta Elo" /><figcaption aria-hidden="true">Battle of Alberta Elo</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Elo%20Lineplot%20Frame%20(Figma).png" alt="Battle of Alberta Elo" />
+<figcaption aria-hidden="true">Battle of Alberta Elo</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/cgy_edm.png" alt="R2: Calgary vs. Edmonton" /><figcaption aria-hidden="true">R2: Calgary vs. Edmonton</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/cgy_edm.png" alt="R2: Calgary vs. Edmonton" />
+<figcaption aria-hidden="true">R2: Calgary vs. Edmonton</figcaption>
 </figure>
 <h2 id="storylines-heading-into-the-stanley-cup-playoffs">Storylines heading into the Stanley Cup Playoffs</h2>
 <p>From the May 2, 2022 <a href="https://between-the-pipes.com/2022/05/02/storylines-heading-into-the-stanley-cup-playoffs/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Running%20Goal%20Differential%20with%20Logo.png" alt="Running Goal Differential" /><figcaption aria-hidden="true">Running Goal Differential</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Running%20Goal%20Differential%20with%20Logo.png" alt="Running Goal Differential" />
+<figcaption aria-hidden="true">Running Goal Differential</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Performance%20vs%20Expectations%20with%20Logo.png" alt="Performance vs. Expectations" /><figcaption aria-hidden="true">Performance vs. Expectations</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Performance%20vs%20Expectations%20with%20Logo.png" alt="Performance vs. Expectations" />
+<figcaption aria-hidden="true">Performance vs. Expectations</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Team%20Scoring%20Rate%20Leaders.png" alt="Team Scoring Rates" /><figcaption aria-hidden="true">Team Scoring Rates</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Team%20Scoring%20Rate%20Leaders.png" alt="Team Scoring Rates" />
+<figcaption aria-hidden="true">Team Scoring Rates</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/League%20Averages%20Bar%20Chart%20with%20Logo.png" alt="NHL Scoring over Time" /><figcaption aria-hidden="true">NHL Scoring over Time</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/League%20Averages%20Bar%20Chart%20with%20Logo.png" alt="NHL Scoring over Time" />
+<figcaption aria-hidden="true">NHL Scoring over Time</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/col_nsh.png" alt="First Round Matchups" /><figcaption aria-hidden="true">First Round Matchups</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/col_nsh.png" alt="First Round Matchups" />
+<figcaption aria-hidden="true">First Round Matchups</figcaption>
 </figure>
 <h2 id="brentford-will-stay-up-can-they-do-the-once-unthinkable-and-go-top-10">Brentford will stay up – can they do the once unthinkable and go top 10?</h2>
 <p>From the April 27, 2022 <a href="https://between-the-pipes.com/2022/04/07/how-the-2022-world-cup-draw-shook-out-for-usmnt-and-others/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Brentford%20Rankings%20Evolution%20with%20Logo2.png" alt="Brentford Matchday Rankings" /><figcaption aria-hidden="true">Brentford Matchday Rankings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Brentford%20Rankings%20Evolution%20with%20Logo2.png" alt="Brentford Matchday Rankings" />
+<figcaption aria-hidden="true">Brentford Matchday Rankings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Goal%20Differential%20Plot%20with%20Logo.png" alt="EPL Goal Differential" /><figcaption aria-hidden="true">EPL Goal Differential</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Goal%20Differential%20Plot%20with%20Logo.png" alt="EPL Goal Differential" />
+<figcaption aria-hidden="true">EPL Goal Differential</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/goals%20vs%20xG%20with%20Logo.png" alt="Expected Goals vs. Actuals" /><figcaption aria-hidden="true">Expected Goals vs. Actuals</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/goals%20vs%20xG%20with%20Logo.png" alt="Expected Goals vs. Actuals" />
+<figcaption aria-hidden="true">Expected Goals vs. Actuals</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Market%20Values%20with%20Logo_altered.png" alt="EPL Market Values" /><figcaption aria-hidden="true">EPL Market Values</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/Market%20Values%20with%20Logo_altered.png" alt="EPL Market Values" />
+<figcaption aria-hidden="true">EPL Market Values</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/2021-22%20Premier%20League%20Table.png" alt="MW33 League Table" /><figcaption aria-hidden="true">MW33 League Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Premier%20League%202021-22/2021-22%20Premier%20League%20Table.png" alt="MW33 League Table" />
+<figcaption aria-hidden="true">MW33 League Table</figcaption>
 </figure>
 <p>My submission to RStudio’s 2021 table contest was included in the <a href="https://community.rstudio.com/c/table-gallery/64">RStudio Community Table Gallery</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/RStudio-Table-Contest/main/2021-22%20Premier%20League%20Table.png" alt="RStudio Table Contest" /><figcaption aria-hidden="true">RStudio Table Contest</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/RStudio-Table-Contest/main/2021-22%20Premier%20League%20Table.png" alt="RStudio Table Contest" />
+<figcaption aria-hidden="true">RStudio Table Contest</figcaption>
 </figure>
 <h2 id="how-the-2022-world-cup-draw-shook-out-for-usmnt-and-others">How the 2022 World Cup draw shook out for USMNT and others</h2>
 <p>From the April 7, 2022 <a href="https://between-the-pipes.com/2022/04/07/how-the-2022-world-cup-draw-shook-out-for-usmnt-and-others/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/World%20Cup%202022/FIFA%20World%20Cup%20Rankings%20Table%20with%20Logo.png" alt="World Cup Rankings Table" /><figcaption aria-hidden="true">World Cup Rankings Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/World%20Cup%202022/FIFA%20World%20Cup%20Rankings%20Table%20with%20Logo.png" alt="World Cup Rankings Table" />
+<figcaption aria-hidden="true">World Cup Rankings Table</figcaption>
 </figure>
 <h2 id="a-data-driven-approach-to-why-im-picking-iowa-to-win-the-ncaa-tourney">A data-driven approach to why I’m picking Iowa to win the NCAA tourney</h2>
 <p>From the March 17, 2022 <a href="https://between-the-pipes.com/2022/03/17/a-data-driven-approach-to-why-im-picking-iowa-to-win-the-ncaa-tourney/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/Experts%20vs%20Crowds%20Table%20with%20Logo.png" alt="Experts vs Crowds Table" /><figcaption aria-hidden="true">Experts vs Crowds Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/Experts%20vs%20Crowds%20Table%20with%20Logo.png" alt="Experts vs Crowds Table" />
+<figcaption aria-hidden="true">Experts vs Crowds Table</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/NCAA%20Efficiency%20Ratings%20with%20Logo.png" alt="Efficiency Ratings" /><figcaption aria-hidden="true">Efficiency Ratings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/NCAA%20Efficiency%20Ratings%20with%20Logo.png" alt="Efficiency Ratings" />
+<figcaption aria-hidden="true">Efficiency Ratings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/Conference%20AdjEm%20with%20Logo.png" alt="Conference Ratings" /><figcaption aria-hidden="true">Conference Ratings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/March%20Madness%202022/Conference%20AdjEm%20with%20Logo.png" alt="Conference Ratings" />
+<figcaption aria-hidden="true">Conference Ratings</figcaption>
 </figure>
 <h2 id="revisiting-super-bowl-squares-strategy">Revisiting Super Bowl Squares Strategy</h2>
 <p>From the February 5, 2022 <a href="https://between-the-pipes.com/2022/02/05/revisiting-super-bowl-squares-strategy/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Squares%20Heatmap%20with%20Logo.png" alt="Squares Heatmap" /><figcaption aria-hidden="true">Squares Heatmap</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Squares%20Heatmap%20with%20Logo.png" alt="Squares Heatmap" />
+<figcaption aria-hidden="true">Squares Heatmap</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Heatmap%20by%20Quarter%20with%20Logo.png" alt="Squares Heatmap Quarters" /><figcaption aria-hidden="true">Squares Heatmap Quarters</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Heatmap%20by%20Quarter%20with%20Logo.png" alt="Squares Heatmap Quarters" />
+<figcaption aria-hidden="true">Squares Heatmap Quarters</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Scores%20Histogram%20with%20Logo.png" alt="Squares Histogram" /><figcaption aria-hidden="true">Squares Histogram</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/Scores%20Histogram%20with%20Logo.png" alt="Squares Histogram" />
+<figcaption aria-hidden="true">Squares Histogram</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/SB%20Squares%20Payout%20Tabl%20with%20Logo.png" alt="Payout Table" /><figcaption aria-hidden="true">Payout Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Super%20Bowl%20Squares/SB%20Squares%20Payout%20Tabl%20with%20Logo.png" alt="Payout Table" />
+<figcaption aria-hidden="true">Payout Table</figcaption>
 </figure>
 <h2 id="the-divisional-round-was-one-of-the-most-exciting-weekends-in-nfl-history">The Divisional Round was one of the most exciting weekends in NFL history</h2>
 <p>From the January 29, 2022 <a href="https://betweenpipes.wordpress.com/2022/01/15/a-few-charts-to-close-out-2021-and-stroll-into-the-new-year/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%20Win%20Probability/Win%20Probability%20Patchwork%20Plot%20with%20Logo.png" alt="Win Probability Graphs" /><figcaption aria-hidden="true">Win Probability Graphs</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%20Win%20Probability/Win%20Probability%20Patchwork%20Plot%20with%20Logo.png" alt="Win Probability Graphs" />
+<figcaption aria-hidden="true">Win Probability Graphs</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%20Win%20Probability/Game%20Excitement%20Index%20Table%20with%20Logo.png" alt="GEI Table" /><figcaption aria-hidden="true">GEI Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%20Win%20Probability/Game%20Excitement%20Index%20Table%20with%20Logo.png" alt="GEI Table" />
+<figcaption aria-hidden="true">GEI Table</figcaption>
 </figure>
 <h2 id="a-few-charts-to-close-out-2021-and-stroll-into-the-new-year">A few charts to close out 2021 and stroll into the new year</h2>
 <p>From the January 15, 2022 <a href="https://betweenpipes.wordpress.com/2022/01/15/a-few-charts-to-close-out-2021-and-stroll-into-the-new-year/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/2020%20vs%202021%20Line%20Plot.gif" alt="2021 vs 2021 animated" /><figcaption aria-hidden="true">2021 vs 2021 animated</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/2020%20vs%202021%20Line%20Plot.gif" alt="2021 vs 2021 animated" />
+<figcaption aria-hidden="true">2021 vs 2021 animated</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/2020%20vs%202021%20Line%20Plot%20with%20Logo.png" alt="2021 vs 2021 Line Plot" /><figcaption aria-hidden="true">2021 vs 2021 Line Plot</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/2020%20vs%202021%20Line%20Plot%20with%20Logo.png" alt="2021 vs 2021 Line Plot" />
+<figcaption aria-hidden="true">2021 vs 2021 Line Plot</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Chart%20with%20Logo.png" alt="Step Count Bar Chart" /><figcaption aria-hidden="true">Step Count Bar Chart</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Chart%20with%20Logo.png" alt="Step Count Bar Chart" />
+<figcaption aria-hidden="true">Step Count Bar Chart</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Ridge%20Plot.png" alt="Step Count Ridge Plot" /><figcaption aria-hidden="true">Step Count Ridge Plot</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Ridge%20Plot.png" alt="Step Count Ridge Plot" />
+<figcaption aria-hidden="true">Step Count Ridge Plot</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Table.png" alt="Weekly Table" /><figcaption aria-hidden="true">Weekly Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Health/Step%20Count%20Table.png" alt="Weekly Table" />
+<figcaption aria-hidden="true">Weekly Table</figcaption>
 </figure>
 <h2 id="demar-derozan-is-the-chicago-bulls-fourth-quarter-mid-range-assassin">DeMar DeRozan is the Chicago Bulls’ fourth quarter, mid-range assassin</h2>
 <p>From the December 30, 2021 <a href="https://betweenpipes.wordpress.com/2021/12/30/demar-derozan-is-the-chicago-bulls-fourth-quarter-mid-range-assassin/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/DeRozan%20Four%20Factors%20Chart%20with%20Logo.png" alt="Four Factors" /><figcaption aria-hidden="true">Four Factors</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/DeRozan%20Four%20Factors%20Chart%20with%20Logo.png" alt="Four Factors" />
+<figcaption aria-hidden="true">Four Factors</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Midrange%20Bar%20Chart%20with%20Logo.png" alt="Midrange" /><figcaption aria-hidden="true">Midrange</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Midrange%20Bar%20Chart%20with%20Logo.png" alt="Midrange" />
+<figcaption aria-hidden="true">Midrange</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Win%20Percentage%20Plot%20with%20Logo.png" alt="Win Percentage" /><figcaption aria-hidden="true">Win Percentage</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Win%20Percentage%20Plot%20with%20Logo.png" alt="Win Percentage" />
+<figcaption aria-hidden="true">Win Percentage</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Mid%20Range%20Table.png" alt="Midrange Table" /><figcaption aria-hidden="true">Midrange Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/DeMar%20DeRozan/Mid%20Range%20Table.png" alt="Midrange Table" />
+<figcaption aria-hidden="true">Midrange Table</figcaption>
 </figure>
 <h2 id="drama-fit-for-a-netflix-show-formula-one-championship-comes-down-to-the-wire">Drama fit for a Netflix show, Formula One championship comes down to the wire</h2>
 <p>From the December 10, 2021 <a href="https://betweenpipes.wordpress.com/2021/12/10/drama-fit-for-a-netflix-show-formula-one-championship-comes-down-to-the-wire/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Top%2020%20Drivers%20with%20Logo.png" alt="Top 20 Drivers" /><figcaption aria-hidden="true">Top 20 Drivers</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Top%2020%20Drivers%20with%20Logo.png" alt="Top 20 Drivers" />
+<figcaption aria-hidden="true">Top 20 Drivers</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Drivers%20Line%20Chart%20with%20Logo.png" alt="Drivers by Age" /><figcaption aria-hidden="true">Drivers by Age</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Drivers%20Line%20Chart%20with%20Logo.png" alt="Drivers by Age" />
+<figcaption aria-hidden="true">Drivers by Age</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/2021%20Constructors%20Standings.png" alt="2021 Constructor Standings" /><figcaption aria-hidden="true">2021 Constructor Standings</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/2021%20Constructors%20Standings.png" alt="2021 Constructor Standings" />
+<figcaption aria-hidden="true">2021 Constructor Standings</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Constructors%20Line%20Chart%20with%20Logo.png" alt="2021 Constructors Cumulative Points" /><figcaption aria-hidden="true">2021 Constructors Cumulative Points</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/Constructors%20Line%20Chart%20with%20Logo.png" alt="2021 Constructors Cumulative Points" />
+<figcaption aria-hidden="true">2021 Constructors Cumulative Points</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/2021%20F1%20Driver%20Table.png" alt="2021 Drivers Table" /><figcaption aria-hidden="true">2021 Drivers Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Formula%201/2021%20F1%20Driver%20Table.png" alt="2021 Drivers Table" />
+<figcaption aria-hidden="true">2021 Drivers Table</figcaption>
 </figure>
 <h2 id="quick-hits-early-season-nhl-takeaways">Quick Hits: Early season NHL takeaways</h2>
 <p>From the November 17, 2021 <a href="https://betweenpipes.wordpress.com/2021/11/17/quick-hits-early-season-nhl-takeaways/">blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Winning%20Percentage.png" alt="Winning Percentage" /><figcaption aria-hidden="true">Winning Percentage</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/Winning%20Percentage.png" alt="Winning Percentage" />
+<figcaption aria-hidden="true">Winning Percentage</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/spotrac.png" alt="Injuries" /><figcaption aria-hidden="true">Injuries</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NHL%202022/spotrac.png" alt="Injuries" />
+<figcaption aria-hidden="true">Injuries</figcaption>
 </figure>
 <h2 id="a-week-1-tilt-in-my-opinion-americas-best-college-football-town">A Week 1 tilt in (my opinion) America’s best college football town</h2>
 <p>From the November 14, 2021 <a href="https://betweenpipes.wordpress.com/2021/11/14/a-week-1-tilt-in-my-opinion-americas-best-college-town/">blog post</a>.</p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/CFB%20Stadiums/Big%20Ten%20Summary%20Table.png" alt="CFB Stadiums" /><figcaption aria-hidden="true">CFB Stadiums</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/CFB%20Stadiums/Big%20Ten%20Summary%20Table.png" alt="CFB Stadiums" />
+<figcaption aria-hidden="true">CFB Stadiums</figcaption>
 </figure>
 <h2 id="chartable-takeaways-for-the-upcoming-nhl-season-schedule">Chartable takeaways for the upcoming NHL season schedule</h2>
 <p>From the October 11, 2021 blog post titled <a href="https://betweenpipes.wordpress.com/2021/10/11/chartable-takeaways-for-the-upcoming-nhl-season-schedule/">Chartable takeaways for the upcoming NHL season schedule</a>. The plots below were heavily inspired by Owen Phillips’ work at his substack newsletter <a href="https://thef5.substack.com/">The F5</a>.</p>
@@ -2892,32 +3015,40 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="does-justin-fields-solve-all-the-chicago-bears-qb-issues-of-recent-past">Does Justin Fields solve all the Chicago Bears’ QB issues of recent past?</h2>
 <p>From the September 17, 2021 <a href="https://betweenpipes.wordpress.com/2021/09/17/does-justin-fields-solve-all-the-chicago-bears-qb-issues-of-recent-past/">blog post</a>.</p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202021/Explosive%20Plays%20with%20Logos.png" alt="Explosive Plays" /><figcaption aria-hidden="true">Explosive Plays</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202021/Explosive%20Plays%20with%20Logos.png" alt="Explosive Plays" />
+<figcaption aria-hidden="true">Explosive Plays</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202021/CP%20per%20by%20DoT.png" alt="Completion Rate by DoT" /><figcaption aria-hidden="true">Completion Rate by DoT</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/NFL%202021/CP%20per%20by%20DoT.png" alt="Completion Rate by DoT" />
+<figcaption aria-hidden="true">Completion Rate by DoT</figcaption>
 </figure>
 <h2 id="euro-2020-in-2021-an-italian-renaissance">Euro 2020 (in 2021): An Italian Renaissance</h2>
 <p>From the <a href="https://betweenpipes.wordpress.com/2021/07/25/euro-2020-in-2021-an-italian-renaissance/">July 25, 2021 blog post</a>.</p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/euro_2021.png" alt="Forecast Table" /><figcaption aria-hidden="true">Forecast Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/euro_2021.png" alt="Forecast Table" />
+<figcaption aria-hidden="true">Forecast Table</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Expected%20Goals_with_logo.png" alt="Shot Quality Profiles" /><figcaption aria-hidden="true">Shot Quality Profiles</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Expected%20Goals_with_logo.png" alt="Shot Quality Profiles" />
+<figcaption aria-hidden="true">Shot Quality Profiles</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Euro%202020%20Forecasts.png" alt="Forecast Distributions" /><figcaption aria-hidden="true">Forecast Distributions</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Euro%202020%20Forecasts.png" alt="Forecast Distributions" />
+<figcaption aria-hidden="true">Forecast Distributions</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Expected%20Goals_target_plot.png" alt="Scoring Profiles Target Plot" /><figcaption aria-hidden="true">Scoring Profiles Target Plot</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Euro%202020/Expected%20Goals_target_plot.png" alt="Scoring Profiles Target Plot" />
+<figcaption aria-hidden="true">Scoring Profiles Target Plot</figcaption>
 </figure>
 <h2 id="who-holds-the-title-city-of-champions-in-north-american-sports">Who holds the title ‘City of Champions’ in North American sports?</h2>
 <p>From the <a href="https://betweenpipes.wordpress.com/2021/07/21/who-holds-the-title-city-of-champions-in-north-american-sports/">July 21, 2021 blog post</a></p>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Titles%20Data/championships_table.png" alt="Championships Table" /><figcaption aria-hidden="true">Championships Table</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Titles%20Data/championships_table.png" alt="Championships Table" />
+<figcaption aria-hidden="true">Championships Table</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Titles%20Data/Actual%20vs.%20Expected.png" alt="Actual vs Expected" /><figcaption aria-hidden="true">Actual vs Expected</figcaption>
+<img src="https://raw.githubusercontent.com/steodose/BlogPosts/master/Sports%20Titles%20Data/Actual%20vs.%20Expected.png" alt="Actual vs Expected" />
+<figcaption aria-hidden="true">Actual vs Expected</figcaption>
 </figure>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

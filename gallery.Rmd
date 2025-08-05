@@ -18,6 +18,12 @@ sign_up
 ```
 
 
+How MLB stadiums are playing this season
+----
+From the July 23, 2025[blog post](https://betweenthepipes.substack.com/p/how-mlb-stadiums-are-playing-this)
+![MLB Weather](https://raw.githubusercontent.com/steodose/MLB/refs/heads/main/MLB%20Stadium%20Weather%20Rankings%20with%20Logo.png)
+
+
 Taking stock of the NHL at the 4 Nations break
 ----
 From the Feb 17, 2025 [blog post](https://betweenthepipes.substack.com/p/taking-stock-of-the-nhl-at-the-4)
