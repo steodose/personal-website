@@ -25,7 +25,7 @@ From the January 13, 2026 [blog post](https://betweenthepipes.substack.com/p/jet
 ```{r, echo=FALSE}
 library(htmltools)
 
-jumbo_jets <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/nezfG/2/", width="600", height="400", style="border:none")
+jumbo_jets <- htmltools::tags$iframe(src="https://datawrapper.dwcdn.net/nezfG/2/", width="600", height="500", style="border:none")
 
 jumbo_jets
 
@@ -35,7 +35,7 @@ jumbo_jets
 
 Analyzing NHL attendance trends halfway through 2025-26 season
 ----
-From the January 11, 2026[blog post](https://betweenthepipes.substack.com/p/analyzing-nhl-attendance-trends-halfway)
+From the January 11, 2026 [blog post](https://betweenthepipes.substack.com/p/analyzing-nhl-attendance-trends-halfway)
 ![NHL Attendance](https://github.com/steodose/BlogPosts/blob/master/NHL%20Attendance/nhl_attendance_trends_with_logo.png?raw=true)
 
 
@@ -43,7 +43,7 @@ From the January 11, 2026[blog post](https://betweenthepipes.substack.com/p/anal
 
 How MLB stadiums are playing this season 
 ----
-From the July 23, 2025[blog post](https://betweenthepipes.substack.com/p/how-mlb-stadiums-are-playing-this)
+From the July 23, 2025 [blog post](https://betweenthepipes.substack.com/p/how-mlb-stadiums-are-playing-this)
 ![MLB Weather](https://raw.githubusercontent.com/steodose/MLB/refs/heads/main/MLB%20Stadium%20Weather%20Rankings%20with%20Logo.png)
 
 
