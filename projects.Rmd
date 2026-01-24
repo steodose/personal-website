@@ -27,6 +27,16 @@ create_proj_card(
 )
 
 
+
+create_proj_card(
+  img_src = "images/NHL.png",
+  url = "https://steodose.github.io/nhl-dashboard/#teams",
+  title = "NHL Analytics",
+  text = "NHL analytics web app showing the latest standings, advanced stats and Stanley Cup odds for all 32 NHL teams.",
+  text2 = NULL
+)
+
+
 create_proj_card(
   img_src = "images/MLB Grouped.png",
   url = "https://steodose.github.io/MLB/MLB-Summary.html",
@@ -154,17 +164,6 @@ create_proj_card(
   url = "http://stephanteodosescu.com/F1/F1-Summary.html",
   title = "F1 Analytics",
   text = "Website dedicated to Formula 1 analytics and visualizaton.",
-  text2 = NULL
-)
-
-
-
-
-create_proj_card(
-  img_src = "images/NHL.png",
-  url = "https://steodosescu.shinyapps.io/nhl-odds/",
-  title = "NHL Odds App",
-  text = "[Deprecated as of 2022] My NHL odds app shows the latest stats, standings, and playoff probabilities for all 32 NHL teams.",
   text2 = NULL
 )
 
