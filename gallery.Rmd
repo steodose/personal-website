@@ -18,6 +18,17 @@ sign_up
 ```
 
 
+Betting on the Sharks is becoming a winning strategy
+-----
+From the January 27, 2026 [blog post](https://betweenthepipes.substack.com/p/betting-on-the-sharks-is-becoming)
+![Sharks Implied Prob](https://github.com/steodose/BlogPosts/blob/master/Sharks%20Odds/sharks_implied_prob.png?raw=true)
+
+![Season Win Probs](https://github.com/steodose/BlogPosts/blob/master/Sharks%20Odds/sharks_prob_by_season.png?raw=true)
+
+![Expected Goals](https://github.com/steodose/BlogPosts/blob/master/Sharks%20Odds/Expected%20Goals%20Summary%20with%20Logo.png?raw=true)
+
+
+
 Jet Lag: 12 takeaways in analyzing NFL team travel schedules this season
 -----
 From the January 13, 2026 [blog post](https://betweenthepipes.substack.com/p/jet-lag-12-takeaways-in-analyzing)
